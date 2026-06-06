@@ -46,8 +46,9 @@ jobs:
           done
 
       - name: Install ffmpeg and download hero video
+        continue-on-error: true
         run: |
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg || true
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0"
           curl -L --max-time 90 -A "$UA" \
             "https://videos.pexels.com/video-files/27857021/12245078_3840_2160_60fps.mp4" \
