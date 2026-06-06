@@ -1,0 +1,75 @@
+name: Download Images & Video from CDN
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create directories
+        run: mkdir -p img/galeri img/hero
+
+      - name: Download logo (Instagram profile picture)
+        run: |
+          curl -L --max-time 30 \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0" \
+            "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/60077842_286510325628327_5857779910738706432_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NDUuYzIifQ&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=2f_tJ7_kSXgQ7kNvwF2Mxk6&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af-uW4ci95W1GBMN6ZTzogxVgoJ6PwdLLMK52ukIM5xwLw&oe=6A2A57AF&_nc_sid=8b3546" \
+            -o img/logo.jpg && echo "Logo OK" || echo "Logo failed"
+
+      - name: Download gallery images
+        run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0"
+          declare -a URLS=(
+            "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/629670828_18505297891072460_5484748747538401375_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=kzvZ3TrK07UQ7kNvwEs583R&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjIwNDUyNzc3NzE5NDQxMzIxMQ%3D%3D.3-ccb7-5&oh=00_Af8CKD-hJ1wJyItMq78ZDfhZ51j4w8xivIKjUM7dyY9tVw&oe=6A2A6517&_nc_sid=8b3546"
+            "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/622557778_18189426304355465_1203199828382196778_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=-NTP1UAnnp4Q7kNvwH7s5-_&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjE1NTA2NDIzNzE3ODA5NDE2Mw%3D%3D.3-ccb7-5&oh=00_Af-e19cef7WT9TtrY_TrcIwcRNUzVAlMoNMH8P0xbkzzrw&oe=6A2A5BFB&_nc_sid=8b3546"
+            "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/649739330_18129657430555594_520906808978114120_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=110&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=JGaev7vw91sQ7kNvwGBmaA-&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjE1NTA2MzY1NzI0MDEwNzkzMg%3D%3D.3-ccb7-5&oh=00_Af8iLdKi0jA16tO4NlE2-RNjxNFJShwn6zobvAZxnnpTeA&oe=6A2A58D7&_nc_sid=8b3546"
+            "https://scontent-iad6-1.cdninstagram.com/v/t51.71878-15/531026697_2217311392074336_757949463669187034_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=5BWUcfAXtyIQ7kNvwHmQ_M6&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af-BRZ8Drvs-LgXt0zcP1ugCrEKvefZHwWlqqjiEzMz5ew&oe=6A2A7EFF&_nc_sid=8b3546"
+            "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/638303370_18563210335048447_4691525377215486825_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=q3FRS0Whv7kQ7kNvwE_FQ5i&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1Njg5OTMyMTQ4OTQxMA%3D%3D.3-ccb7-5&oh=00_Af-rl7bU93hVF__tDO7V_A2znkdgRgRIYa8dGN_EFlh3CQ&oe=6A2A7073&_nc_sid=8b3546"
+            "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/640398016_18563094256047831_7782625688793982220_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=pgv6yVo9bLUQ7kNvwEYvpaj&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NjMzMDI0NjczODA0Nw%3D%3D.3-ccb7-5&oh=00_Af-0GTSViInQHEISaKxV5w3vl5m9tXFK1N-ZBUvsm14pNQ&oe=6A2A66F7&_nc_sid=8b3546"
+            "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/639543972_18567334147028789_7630773679934025189_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=nlMr2S8wSB8Q7kNvwFFjOZ8&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NjA1MTUxODM2NjM0Mg%3D%3D.3-ccb7-5&oh=00_Af9mypQH-56Ixmyyli3oxQqm5vVf4Yz3QIUn2JPGEy5BiQ&oe=6A2A611B&_nc_sid=8b3546"
+            "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/624118205_18349189114230482_161858816123394895_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=94R3RaP_dggQ7kNvwEnFVbB&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NTU1NTE5ODA5MDU4Mg%3D%3D.3-ccb7-5&oh=00_Af9NmDduv0HNZvtRKYW-tuKXA2UE5NtX3ligg3VFOk9GLw&oe=6A2A6C95&_nc_sid=8b3546"
+            "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/627050086_18346331560228909_8564867710687082284_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=hgdeDb8c9lEQ7kNvwFLjbAs&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NTE2ODcwMTIwOTIwMQ%3D%3D.3-ccb7-5&oh=00_Af9kql-xEGOBeUF1vLwGoqvEfCok_unPrEykiSuwOl3o2A&oe=6A2A7108&_nc_sid=8b3546"
+            "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/629376279_18406703713134503_968184318982027998_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=111&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=LEg5O_SxiRkQ7kNvwGvyMPj&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NDk0NzA5MTAyNDcyNw%3D%3D.3-ccb7-5&oh=00_Af_EHoegS--AYeX0Q5jHzG71gGX_YqzovrevXYKjRR4udQ&oe=6A2A82CD&_nc_sid=8b3546"
+            "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/640047171_18560035084024972_3071074648393788291_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=nTs-5XH_W_AQ7kNvwHGSIt0&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NDczNTc1Njk1NDUyMQ%3D%3D.3-ccb7-5&oh=00_Af_jkDrqyIa12e3kohJWS_3YsG6vjgud3UTgge9SMSI2_w&oe=6A2A78D4&_nc_sid=8b3546"
+            "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/636733425_18566154979022815_3165798722054765730_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=FJnQn2wgcfoQ7kNvwGkKsdE&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=MjA0MDE1NDM4MjY3MjAzOTQyNw%3D%3D.3-ccb7-5&oh=00_Af_rh4SyLozwXdKyV_qSY6TG0j3wX6JAc5kiCuvcuAasxA&oe=6A2A5079&_nc_sid=8b3546"
+          )
+          for i in "${!URLS[@]}"; do
+            num=$((i+1))
+            curl -L --max-time 30 -A "$UA" "${URLS[$i]}" -o "img/galeri/ig_${num}.jpg" \
+              && echo "img $num OK" || echo "img $num failed"
+          done
+
+      - name: Install ffmpeg and download hero video
+        run: |
+          sudo apt-get install -y ffmpeg
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0"
+          curl -L --max-time 90 -A "$UA" \
+            "https://videos.pexels.com/video-files/27857021/12245078_3840_2160_60fps.mp4" \
+            -o img/hero/hero_raw.mp4 || true
+          if [ -s img/hero/hero_raw.mp4 ]; then
+            ffmpeg -i img/hero/hero_raw.mp4 -t 10 -vf "scale=1280:720" \
+              -c:v libx264 -crf 28 -preset fast -an -movflags +faststart \
+              img/hero/hero.mp4 && rm img/hero/hero_raw.mp4 && echo "Video OK"
+          else
+            echo "No video downloaded - CSS background will be used"
+          fi
+
+      - name: List files
+        run: |
+          echo "=== img/ ===" && ls -lh img/ || true
+          echo "=== img/galeri/ ===" && ls -lh img/galeri/ || true
+          echo "=== img/hero/ ===" && ls -lh img/hero/ || true
+
+      - name: Commit and push
+        run: |
+          git config user.email "nakosat@gmail.com"
+          git config user.name "Workingcodes"
+          git add img/
+          git diff --staged --quiet || git commit -m "Add downloaded images, logo and hero video"
+          git push origin main
