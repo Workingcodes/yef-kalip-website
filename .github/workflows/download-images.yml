@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Create directories
         run: mkdir -p img/galeri img/hero
@@ -20,7 +22,12 @@ jobs:
           curl -L --max-time 30 \
             -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0" \
             "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/60077842_286510325628327_5857779910738706432_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NDUuYzIifQ&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gF1mdb5VanwiTaqAOVrFuYcsCH8z4iUSuabIb7reSSDLJCpPKYX7jAKt9Z93aSzA88&_nc_ohc=2f_tJ7_kSXgQ7kNvwF2Mxk6&_nc_gid=ZgHEqIsp4WYvsTgHnb3fWA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af-uW4ci95W1GBMN6ZTzogxVgoJ6PwdLLMK52ukIM5xwLw&oe=6A2A57AF&_nc_sid=8b3546" \
-            -o img/logo.jpg && echo "Logo OK" || echo "Logo failed"
+            -o img/logo.jpg
+          if file img/logo.jpg | grep -qiE 'JPEG|image'; then
+            echo "Logo OK ($(wc -c < img/logo.jpg) bytes)"
+          else
+            echo "Logo INVALID - removing"; rm -f img/logo.jpg
+          fi
 
       - name: Download gallery images
         run: |
@@ -41,36 +48,52 @@ jobs:
           )
           for i in "${!URLS[@]}"; do
             num=$((i+1))
-            curl -L --max-time 30 -A "$UA" "${URLS[$i]}" -o "img/galeri/ig_${num}.jpg" \
-              && echo "img $num OK" || echo "img $num failed"
+            curl -L --max-time 30 -A "$UA" "${URLS[$i]}" -o "img/galeri/ig_${num}.jpg" || true
+            if file "img/galeri/ig_${num}.jpg" | grep -qiE 'JPEG|image'; then
+              echo "img $num OK ($(wc -c < img/galeri/ig_${num}.jpg) bytes)"
+            else
+              echo "img $num INVALID - removing"
+              rm -f "img/galeri/ig_${num}.jpg"
+            fi
           done
 
-      - name: Install ffmpeg and download hero video
+      - name: Download and compress hero video
         continue-on-error: true
         run: |
-          sudo apt-get install -y ffmpeg || true
+          sudo apt-get install -y ffmpeg 2>/dev/null || true
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0"
-          curl -L --max-time 90 -A "$UA" \
+          # Download with 50MB max size to avoid GitHub 100MB limit issues
+          curl -L --max-time 120 --max-filesize 80000000 -A "$UA" \
             "https://videos.pexels.com/video-files/27857021/12245078_3840_2160_60fps.mp4" \
             -o img/hero/hero_raw.mp4 || true
-          if [ -s img/hero/hero_raw.mp4 ]; then
+          if [ -s img/hero/hero_raw.mp4 ] && file img/hero/hero_raw.mp4 | grep -qiE 'MP4|video|ISO'; then
             ffmpeg -i img/hero/hero_raw.mp4 -t 10 -vf "scale=1280:720" \
               -c:v libx264 -crf 28 -preset fast -an -movflags +faststart \
-              img/hero/hero.mp4 && rm img/hero/hero_raw.mp4 && echo "Video OK"
+              img/hero/hero.mp4 && echo "Video compressed OK" || echo "ffmpeg failed"
           else
-            echo "No video downloaded - CSS background will be used"
+            echo "No valid video - CSS fallback will be used"
           fi
+          # Always remove raw file before committing (can be 100MB+)
+          rm -f img/hero/hero_raw.mp4
 
-      - name: List files
+      - name: List downloaded files
         run: |
-          echo "=== img/ ===" && ls -lh img/ || true
-          echo "=== img/galeri/ ===" && ls -lh img/galeri/ || true
-          echo "=== img/hero/ ===" && ls -lh img/hero/ || true
+          echo "=== img/ ===" && ls -lh img/ 2>/dev/null || echo "(empty)"
+          echo "=== img/galeri/ ===" && ls -lh img/galeri/ 2>/dev/null || echo "(empty)"
+          echo "=== img/hero/ ===" && ls -lh img/hero/ 2>/dev/null || echo "(empty)"
 
       - name: Commit and push
         run: |
           git config user.email "nakosat@gmail.com"
           git config user.name "Workingcodes"
+          # Set remote URL with token to ensure push auth works
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Workingcodes/yef-kalip-website.git"
           git add img/
-          git diff --staged --quiet || git commit -m "Add downloaded images, logo and hero video"
-          git push origin main
+          git status
+          if ! git diff --staged --quiet; then
+            git commit -m "Add downloaded images, logo and hero video"
+            git push origin main
+            echo "PUSHED OK"
+          else
+            echo "Nothing to commit - no valid files downloaded"
+          fi
