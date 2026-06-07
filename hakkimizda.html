@@ -13,6 +13,9 @@
   <meta property="og:description" content="Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı alanında deneyimli kadrosuyla hizmet veren YEF KALIP hakkında." />
   <meta property="og:image" content="https://yefkalip.com/img/galeri/ig_1.jpg" />
   <meta property="og:site_name" content="YEF KALIP" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" type="image/jpeg" href="img/logo.jpg" />
@@ -61,7 +64,16 @@
     @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2,1fr); } .strip-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 640px) { .values-grid { grid-template-columns: 1fr; } .strip-grid { grid-template-columns: 1fr; } }
   </style>
-</head>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://yefkalip.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Hakkımızda", "item": "https://yefkalip.com/hakkimizda.html" }
+    ]
+  }
+  </script></head>
 <body>
 
 <nav class="navbar" id="navbar">
