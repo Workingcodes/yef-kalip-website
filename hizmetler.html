@@ -8,21 +8,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/jpeg" href="img/logo.jpg" />
   <style>
-    .services-section { padding: 80px 0 96px; }
-    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .service-block:last-child { border-bottom: none; }
+    .services-section { padding: 0; }
+    /* Alternating section backgrounds */
+    .svc-wrap:nth-child(odd)  { background: #ffffff; }
+    .svc-wrap:nth-child(even) { background: #f4f6f9; }
+    .svc-wrap { padding: 72px 0; }
+    .svc-wrap:not(:last-child) { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .service-block.reverse { direction: rtl; }
     .service-block.reverse > * { direction: ltr; }
     .service-img { border-radius: 8px; overflow: hidden; }
     .service-img img { width: 100%; height: 340px; object-fit: cover; display: block; transition: transform 0.6s ease; }
     .service-img:hover img { transform: scale(1.04); }
-    .service-num { font-family:'Outfit',sans-serif; font-size: 5rem; font-weight: 900; color: rgba(204,27,27,0.1); line-height: 1; margin-bottom: 8px; }
-    .service-content h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 16px; color: var(--white); }
+    .service-num { font-family:'Outfit',sans-serif; font-size: 5rem; font-weight: 900; color: rgba(204,27,27,0.12); line-height: 1; margin-bottom: 8px; }
+    .service-content h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 16px; color: #0d1117; }
     .service-content h2 span { color: var(--red); }
-    .service-content p { color: var(--muted); line-height: 1.8; margin-bottom: 20px; font-size: 0.92rem; }
+    .service-content p { color: #5a6270; line-height: 1.8; margin-bottom: 20px; font-size: 0.92rem; }
     .service-features { margin-bottom: 24px; }
-    .service-features li { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 0.86rem; color: var(--light); }
+    .service-features li { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 0.86rem; color: #4a5568; }
     .service-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .svc-label { display: inline-flex; align-items: center; gap: 8px; font-family:'Outfit',sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .svc-label::before { content:''; display:block; width:20px; height:2px; background:var(--red); }
     .cta-mini { padding: 72px 0; text-align: center; background: #0d1017; }
     @media (max-width: 1024px) { .service-block, .service-block.reverse { grid-template-columns: 1fr; direction: ltr; } }
   </style>
@@ -57,135 +63,103 @@
 </div>
 
 <section class="services-section">
-  <div class="container">
 
-    <!-- 1 -->
-    <div class="service-block">
-      <div class="service-img slide-left">
-        <img src="img/galeri/ig_1.jpg" alt="Plastik Enjeksiyon Kalıbı" loading="lazy" />
-      </div>
-      <div class="slide-right">
-        <div class="service-num">01</div>
-        <div class="section-label">Hizmet</div>
-        <h2><span>Plastik Enjeksiyon</span> Kalıbı</h2>
-        <p>Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz. Tek gözlü ve çok gözlü kalıplardan karmaşık geometrilere, sıcak yolluk sistemlerinden soğuk yolluk düzeneklerine kadar geniş bir kapasite sunuyoruz.</p>
-        <ul class="service-features">
-          <li>Tek ve çok gözlü kalıp imalatı</li>
-          <li>Sıcak ve soğuk yolluk sistemleri</li>
-          <li>Karmaşık geometri ve derin çekimler</li>
-          <li>Yüksek toleranslı yüzey kalitesi</li>
-          <li>Otomotiv, elektronik ve ambalaj sektörleri</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+  <div class="svc-wrap"><!-- odd = white -->
+    <div class="container">
+      <div class="service-block">
+        <div class="service-img slide-left"><img src="img/galeri/ig_1.jpg" alt="Plastik Enjeksiyon Kalıbı" loading="lazy" /></div>
+        <div class="service-content slide-right">
+          <div class="service-num">01</div>
+          <div class="svc-label">Hizmet</div>
+          <h2><span>Plastik Enjeksiyon</span> Kalıbı</h2>
+          <p>Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz. Tek gözlü ve çok gözlü kalıplardan karmaşık geometrilere, sıcak yolluk sistemlerinden soğuk yolluk düzeneklerine kadar geniş kapasite.</p>
+          <ul class="service-features"><li>Tek ve çok gözlü kalıp imalatı</li><li>Sıcak ve soğuk yolluk sistemleri</li><li>Karmaşık geometri ve derin çekimler</li><li>Yüksek toleranslı yüzey kalitesi</li><li>Otomotiv, elektronik ve ambalaj sektörleri</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
       </div>
     </div>
-
-    <!-- 2 -->
-    <div class="service-block reverse">
-      <div class="service-img slide-right">
-        <img src="img/galeri/ig_3.jpg" alt="CNC İşleme" loading="lazy" />
-      </div>
-      <div class="slide-left">
-        <div class="service-num">02</div>
-        <div class="section-label">Hizmet</div>
-        <h2>CNC <span>İşleme</span></h2>
-        <p>Modern CNC tezgahlarımızla frezeleme, tornalama ve hassas işleme hizmetleri sunuyoruz. Çelik, alüminyum ve özel alaşımlar dahil geniş malzeme yelpazesinde çalışıyoruz.</p>
-        <ul class="service-features">
-          <li>3 ve 4 eksen CNC frezeleme</li>
-          <li>CNC tornalama ve silindirik işleme</li>
-          <li>Hassas ölçü ve tolerans kabiliyeti</li>
-          <li>Prototipten seri üretime</li>
-          <li>Çeşitli malzeme kapasitesi</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
-      </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="service-block">
-      <div class="service-img slide-left">
-        <img src="img/galeri/ig_5.jpg" alt="Kalıp Tasarımı" loading="lazy" />
-      </div>
-      <div class="slide-right">
-        <div class="service-num">03</div>
-        <div class="section-label">Hizmet</div>
-        <h2>Kalıp <span>Tasarımı</span></h2>
-        <p>CAD/CAM teknolojileriyle müşteri odaklı kalıp tasarımı gerçekleştiriyoruz. Ürününüzün 3D modeli, kalıp akış analizi ve üretim optimizasyonu dahil tam tasarım hizmeti.</p>
-        <ul class="service-features">
-          <li>Tam 3D kalıp tasarımı (SolidWorks/CATIA)</li>
-          <li>Akış analizi ve simülasyon</li>
-          <li>Soğutma sistemi optimizasyonu</li>
-          <li>Parçalama ve itici sistem tasarımı</li>
-          <li>Müşteri onayına göre revizyon</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
-      </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="service-block reverse">
-      <div class="service-img slide-right">
-        <img src="img/galeri/ig_7.jpg" alt="Prototip Üretim" loading="lazy" />
-      </div>
-      <div class="slide-left">
-        <div class="service-num">04</div>
-        <div class="section-label">Hizmet</div>
-        <h2>Prototip <span>Üretim</span></h2>
-        <p>Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz. Ürününüzü gerçek koşullarda test ederek riskleri azaltın, seri üretime güvenle geçin.</p>
-        <ul class="service-features">
-          <li>Hızlı prototip kalıp üretimi</li>
-          <li>Test ve numune parça üretimi</li>
-          <li>Tasarım doğrulama ve revizyon</li>
-          <li>Kısa teslim süreleri</li>
-          <li>Seri üretime geçiş desteği</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
-      </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="service-block">
-      <div class="service-img slide-left">
-        <img src="img/galeri/ig_9.jpg" alt="Bakım Onarım" loading="lazy" />
-      </div>
-      <div class="slide-right">
-        <div class="service-num">05</div>
-        <div class="section-label">Hizmet</div>
-        <h2>Bakım <span>&amp; Onarım</span></h2>
-        <p>Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz. Düzenli bakım ile kalıplarınızın ömrünü uzatıyor, üretim verimliliğinizi artırıyoruz.</p>
-        <ul class="service-features">
-          <li>Periyodik kalıp bakımı</li>
-          <li>Hasar tespiti ve onarım</li>
-          <li>Kalıp revizyonu ve modifikasyon</li>
-          <li>Yedek parça üretimi</li>
-          <li>Acil servis kapasitesi</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
-      </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="service-block reverse">
-      <div class="service-img slide-right">
-        <img src="img/galeri/ig_11.jpg" alt="Fason Üretim" loading="lazy" />
-      </div>
-      <div class="slide-left">
-        <div class="service-num">06</div>
-        <div class="section-label">Hizmet</div>
-        <h2>Fason <span>Üretim</span></h2>
-        <p>İhtiyacınıza özel fason plastik parça üretimi yapıyoruz. Küçük seriden büyük partilere, esnek kapasite ve rekabetçi fiyatlarla güvenilir üretim ortağınız.</p>
-        <ul class="service-features">
-          <li>Plastik enjeksiyon parça üretimi</li>
-          <li>Esnek seri büyüklükleri</li>
-          <li>Kalite kontrol ve raporlama</li>
-          <li>Paketleme ve lojistik desteği</li>
-          <li>Uzun vadeli üretim anlaşmaları</li>
-        </ul>
-        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
-      </div>
-    </div>
-
   </div>
+
+  <div class="svc-wrap"><!-- even = light gray -->
+    <div class="container">
+      <div class="service-block reverse">
+        <div class="service-img slide-right"><img src="img/galeri/ig_3.jpg" alt="CNC İşleme" loading="lazy" /></div>
+        <div class="service-content slide-left">
+          <div class="service-num">02</div>
+          <div class="svc-label">Hizmet</div>
+          <h2>CNC <span>İşleme</span></h2>
+          <p>Modern CNC tezgahlarımızla frezeleme, tornalama ve hassas işleme hizmetleri sunuyoruz. Çelik, alüminyum ve özel alaşımlar dahil geniş malzeme yelpazesinde çalışıyoruz.</p>
+          <ul class="service-features"><li>3 ve 4 eksen CNC frezeleme</li><li>CNC tornalama ve silindirik işleme</li><li>Hassas ölçü ve tolerans kabiliyeti</li><li>Prototipten seri üretime</li><li>Çeşitli malzeme kapasitesi</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-wrap"><!-- odd = white -->
+    <div class="container">
+      <div class="service-block">
+        <div class="service-img slide-left"><img src="img/galeri/ig_5.jpg" alt="Kalıp Tasarımı" loading="lazy" /></div>
+        <div class="service-content slide-right">
+          <div class="service-num">03</div>
+          <div class="svc-label">Hizmet</div>
+          <h2>Kalıp <span>Tasarımı</span></h2>
+          <p>CAD/CAM teknolojileriyle müşteri odaklı kalıp tasarımı gerçekleştiriyoruz. Ürününüzün 3D modeli, kalıp akış analizi ve üretim optimizasyonu dahil tam tasarım hizmeti.</p>
+          <ul class="service-features"><li>Tam 3D kalıp tasarımı (SolidWorks/CATIA)</li><li>Akış analizi ve simülasyon</li><li>Soğutma sistemi optimizasyonu</li><li>Parçalama ve itici sistem tasarımı</li><li>Müşteri onayına göre revizyon</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-wrap"><!-- even = light gray -->
+    <div class="container">
+      <div class="service-block reverse">
+        <div class="service-img slide-right"><img src="img/galeri/ig_7.jpg" alt="Prototip Üretim" loading="lazy" /></div>
+        <div class="service-content slide-left">
+          <div class="service-num">04</div>
+          <div class="svc-label">Hizmet</div>
+          <h2>Prototip <span>Üretim</span></h2>
+          <p>Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz. Ürününüzü gerçek koşullarda test ederek riskleri azaltın, seri üretime güvenle geçin.</p>
+          <ul class="service-features"><li>Hızlı prototip kalıp üretimi</li><li>Test ve numune parça üretimi</li><li>Tasarım doğrulama ve revizyon</li><li>Kısa teslim süreleri</li><li>Seri üretime geçiş desteği</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-wrap"><!-- odd = white -->
+    <div class="container">
+      <div class="service-block">
+        <div class="service-img slide-left"><img src="img/galeri/ig_9.jpg" alt="Bakım Onarım" loading="lazy" /></div>
+        <div class="service-content slide-right">
+          <div class="service-num">05</div>
+          <div class="svc-label">Hizmet</div>
+          <h2>Bakım <span>&amp; Onarım</span></h2>
+          <p>Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz. Düzenli bakım ile kalıplarınızın ömrünü uzatıyor, üretim verimliliğinizi artırıyoruz.</p>
+          <ul class="service-features"><li>Periyodik kalıp bakımı</li><li>Hasar tespiti ve onarım</li><li>Kalıp revizyonu ve modifikasyon</li><li>Yedek parça üretimi</li><li>Acil servis kapasitesi</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-wrap"><!-- even = light gray -->
+    <div class="container">
+      <div class="service-block reverse">
+        <div class="service-img slide-right"><img src="img/galeri/ig_11.jpg" alt="Fason Üretim" loading="lazy" /></div>
+        <div class="service-content slide-left">
+          <div class="service-num">06</div>
+          <div class="svc-label">Hizmet</div>
+          <h2>Fason <span>Üretim</span></h2>
+          <p>İhtiyacınıza özel fason plastik parça üretimi yapıyoruz. Küçük seriden büyük partilere, esnek kapasite ve rekabetçi fiyatlarla güvenilir üretim ortağınız.</p>
+          <ul class="service-features"><li>Plastik enjeksiyon parça üretimi</li><li>Esnek seri büyüklükleri</li><li>Kalite kontrol ve raporlama</li><li>Paketleme ve lojistik desteği</li><li>Uzun vadeli üretim anlaşmaları</li></ul>
+          <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <div class="cta-mini">
