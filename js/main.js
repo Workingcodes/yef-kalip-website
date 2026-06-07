@@ -77,15 +77,17 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const answer = btn.nextElementSibling;
     const isOpen = btn.classList.contains('open');
+    // close all
     document.querySelectorAll('.faq-q').forEach(b => {
       b.classList.remove('open');
       b.setAttribute('aria-expanded', 'false');
-      b.nextElementSibling?.classList.remove('open');
+      const a = b.nextElementSibling;
+      if (a) a.style.maxHeight = '0';
     });
     if (!isOpen) {
       btn.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      answer?.classList.add('open');
+      if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
     }
   });
 });
