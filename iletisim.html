@@ -46,7 +46,7 @@
   }
   </script>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" type="image/jpeg" href="img/logo.jpg" />
   <style>
     .contact-section { padding: 80px 0 0; background: #ffffff; }
@@ -200,6 +200,8 @@
         <h3>Mesaj Gönderin</h3>
         <p>Projenizi anlatın, size en kısa sürede dönelim.</p>
         <form action="https://formspree.io/f/xbdegvkr" method="POST">
+          <!-- Honeypot — bot koruması -->
+          <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <div class="form-group">
               <label>Ad Soyad</label>
