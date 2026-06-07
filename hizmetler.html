@@ -1,225 +1,217 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hizmetler – YEF KALIP | Plastik Enjeksiyon Kalıp İmalatı</title>
-  <meta name="description" content="YEF KALIP hizmetleri: Plastik enjeksiyon kalıbı, CNC işleme, kalıp tasarımı, prototip üretim ve daha fazlası. İstanbul Ümraniye.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+  <meta name="description" content="YEF KALIP hizmetleri: Plastik enjeksiyon kalıbı, CNC işleme, kalıp tasarımı, prototip üretim, bakım-onarım ve fason üretim. Ümraniye İstanbul." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+  <style>
+    .services-section { padding: 80px 0 96px; }
+    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .service-block:last-child { border-bottom: none; }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+    .service-img { border-radius: 8px; overflow: hidden; }
+    .service-img img { width: 100%; height: 340px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .service-img:hover img { transform: scale(1.04); }
+    .service-num { font-family:'Outfit',sans-serif; font-size: 5rem; font-weight: 900; color: rgba(204,27,27,0.1); line-height: 1; margin-bottom: 8px; }
+    .service-content h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 16px; color: var(--white); }
+    .service-content h2 span { color: var(--red); }
+    .service-content p { color: var(--muted); line-height: 1.8; margin-bottom: 20px; font-size: 0.92rem; }
+    .service-features { margin-bottom: 24px; }
+    .service-features li { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 0.86rem; color: var(--light); }
+    .service-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .cta-mini { padding: 72px 0; text-align: center; background: #0d1017; }
+    @media (max-width: 1024px) { .service-block, .service-block.reverse { grid-template-columns: 1fr; direction: ltr; } }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="logo">
-      <img src="img/logo.jpg" alt="YEF KALIP Logo" onerror="this.style.display='none'">
-      <div>
-        <span class="logo-text">YEF KALIP</span>
-        <span class="logo-sub">Plastik Enjeksiyon</span>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="img/logo.jpg" alt="YEF KALIP" /><div class="nav-logo-text">YEF KALIP<small>Plastik Enjeksiyon</small></div></a>
+    <div class="nav-menu">
+      <a href="index.html">Ana Sayfa</a><a href="hakkimizda.html">Hakkımızda</a>
+      <a href="hizmetler.html" class="active">Hizmetler</a><a href="galeri.html">Galeri</a><a href="iletisim.html">İletişim</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-social"><a href="https://www.instagram.com/yef_kalip/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/yefkalip/" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/905325896771" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+      <div class="nav-cta"><a href="iletisim.html"><i class="fas fa-envelope"></i> İletişime Geçin</a></div>
+    </div>
+    <button class="nav-hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html">Ana Sayfa</a><a href="hakkimizda.html">Hakkımızda</a><a href="hizmetler.html">Hizmetler</a><a href="galeri.html">Galeri</a><a href="iletisim.html">İletişim</a>
+  <a href="tel:+905325896771" style="color:var(--red);margin-top:8px;"><i class="fas fa-phone"></i> 0532 589 67 71</a>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>/</span><span>Hizmetler</span></div>
+    <h1>Hizmetlerimiz</h1>
+    <p>Plastik enjeksiyon kalıpçılığı alanında kapsamlı çözüm yelpazesi</p>
+  </div>
+</div>
+
+<section class="services-section">
+  <div class="container">
+
+    <!-- 1 -->
+    <div class="service-block">
+      <div class="service-img slide-left">
+        <img src="img/galeri/ig_1.jpg" alt="Plastik Enjeksiyon Kalıbı" loading="lazy" />
       </div>
-    </a>
-    <nav id="mainNav">
-      <a href="index.html" data-i18n="nav_home">Ana Sayfa</a>
-      <a href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a>
-      <a href="hizmetler.html" data-i18n="nav_services">Hizmetler</a>
-      <a href="galeri.html" data-i18n="nav_gallery">Galeri</a>
-      <a href="iletisim.html" data-i18n="nav_contact">İletişim</a>
-    </nav>
-    <div class="header-right">
-      <a href="https://www.instagram.com/yef_kalip/" target="_blank" class="header-social-link" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><defs><linearGradient id="ig-h" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f09433"/><stop offset=".25" stop-color="#e6683c"/><stop offset=".5" stop-color="#dc2743"/><stop offset=".75" stop-color="#cc2366"/><stop offset="1" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig-h)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.5" fill="none" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.5"/><circle cx="16.5" cy="7.5" r="1.1" fill="white"/></svg></a>
-      <a href="https://www.facebook.com/yefkalip/" target="_blank" class="header-social-link" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#1877F2"/><path d="M13 21v-7h2.5l.4-3H13V9.5c0-.9.4-1.5 1.6-1.5H16V5.1S14.9 5 13.7 5C11.4 5 10 6.4 10 8.9V11H7.5v3H10v7h3z" fill="white"/></svg></a>
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="tr">TR</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+      <div class="slide-right">
+        <div class="service-num">01</div>
+        <div class="section-label">Hizmet</div>
+        <h2><span>Plastik Enjeksiyon</span> Kalıbı</h2>
+        <p>Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz. Tek gözlü ve çok gözlü kalıplardan karmaşık geometrilere, sıcak yolluk sistemlerinden soğuk yolluk düzeneklerine kadar geniş bir kapasite sunuyoruz.</p>
+        <ul class="service-features">
+          <li>Tek ve çok gözlü kalıp imalatı</li>
+          <li>Sıcak ve soğuk yolluk sistemleri</li>
+          <li>Karmaşık geometri ve derin çekimler</li>
+          <li>Yüksek toleranslı yüzey kalitesi</li>
+          <li>Otomotiv, elektronik ve ambalaj sektörleri</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
       </div>
     </div>
-    <button class="hamburger" aria-label="Menü">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
+    <!-- 2 -->
+    <div class="service-block reverse">
+      <div class="service-img slide-right">
+        <img src="img/galeri/ig_3.jpg" alt="CNC İşleme" loading="lazy" />
+      </div>
+      <div class="slide-left">
+        <div class="service-num">02</div>
+        <div class="section-label">Hizmet</div>
+        <h2>CNC <span>İşleme</span></h2>
+        <p>Modern CNC tezgahlarımızla frezeleme, tornalama ve hassas işleme hizmetleri sunuyoruz. Çelik, alüminyum ve özel alaşımlar dahil geniş malzeme yelpazesinde çalışıyoruz.</p>
+        <ul class="service-features">
+          <li>3 ve 4 eksen CNC frezeleme</li>
+          <li>CNC tornalama ve silindirik işleme</li>
+          <li>Hassas ölçü ve tolerans kabiliyeti</li>
+          <li>Prototipten seri üretime</li>
+          <li>Çeşitli malzeme kapasitesi</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="service-block">
+      <div class="service-img slide-left">
+        <img src="img/galeri/ig_5.jpg" alt="Kalıp Tasarımı" loading="lazy" />
+      </div>
+      <div class="slide-right">
+        <div class="service-num">03</div>
+        <div class="section-label">Hizmet</div>
+        <h2>Kalıp <span>Tasarımı</span></h2>
+        <p>CAD/CAM teknolojileriyle müşteri odaklı kalıp tasarımı gerçekleştiriyoruz. Ürününüzün 3D modeli, kalıp akış analizi ve üretim optimizasyonu dahil tam tasarım hizmeti.</p>
+        <ul class="service-features">
+          <li>Tam 3D kalıp tasarımı (SolidWorks/CATIA)</li>
+          <li>Akış analizi ve simülasyon</li>
+          <li>Soğutma sistemi optimizasyonu</li>
+          <li>Parçalama ve itici sistem tasarımı</li>
+          <li>Müşteri onayına göre revizyon</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="service-block reverse">
+      <div class="service-img slide-right">
+        <img src="img/galeri/ig_7.jpg" alt="Prototip Üretim" loading="lazy" />
+      </div>
+      <div class="slide-left">
+        <div class="service-num">04</div>
+        <div class="section-label">Hizmet</div>
+        <h2>Prototip <span>Üretim</span></h2>
+        <p>Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz. Ürününüzü gerçek koşullarda test ederek riskleri azaltın, seri üretime güvenle geçin.</p>
+        <ul class="service-features">
+          <li>Hızlı prototip kalıp üretimi</li>
+          <li>Test ve numune parça üretimi</li>
+          <li>Tasarım doğrulama ve revizyon</li>
+          <li>Kısa teslim süreleri</li>
+          <li>Seri üretime geçiş desteği</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="service-block">
+      <div class="service-img slide-left">
+        <img src="img/galeri/ig_9.jpg" alt="Bakım Onarım" loading="lazy" />
+      </div>
+      <div class="slide-right">
+        <div class="service-num">05</div>
+        <div class="section-label">Hizmet</div>
+        <h2>Bakım <span>&amp; Onarım</span></h2>
+        <p>Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz. Düzenli bakım ile kalıplarınızın ömrünü uzatıyor, üretim verimliliğinizi artırıyoruz.</p>
+        <ul class="service-features">
+          <li>Periyodik kalıp bakımı</li>
+          <li>Hasar tespiti ve onarım</li>
+          <li>Kalıp revizyonu ve modifikasyon</li>
+          <li>Yedek parça üretimi</li>
+          <li>Acil servis kapasitesi</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="service-block reverse">
+      <div class="service-img slide-right">
+        <img src="img/galeri/ig_11.jpg" alt="Fason Üretim" loading="lazy" />
+      </div>
+      <div class="slide-left">
+        <div class="service-num">06</div>
+        <div class="section-label">Hizmet</div>
+        <h2>Fason <span>Üretim</span></h2>
+        <p>İhtiyacınıza özel fason plastik parça üretimi yapıyoruz. Küçük seriden büyük partilere, esnek kapasite ve rekabetçi fiyatlarla güvenilir üretim ortağınız.</p>
+        <ul class="service-features">
+          <li>Plastik enjeksiyon parça üretimi</li>
+          <li>Esnek seri büyüklükleri</li>
+          <li>Kalite kontrol ve raporlama</li>
+          <li>Paketleme ve lojistik desteği</li>
+          <li>Uzun vadeli üretim anlaşmaları</li>
+        </ul>
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Teklif Al</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-mini">
   <div class="container">
-    <h1 data-i18n="nav_services">Hizmetler</h1>
-    <div class="breadcrumb">
-      <a href="index.html" data-i18n="nav_home">Ana Sayfa</a>
-      <span class="breadcrumb-sep">/</span>
-      <span data-i18n="nav_services">Hizmetler</span>
+    <h2 class="section-title" style="color:var(--white);margin-bottom:12px;">Projeniz için teklif alın</h2>
+    <p class="section-desc" style="margin:0 auto 32px;text-align:center;">Hizmetlerimiz hakkında detaylı bilgi için bizimle iletişime geçin.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> İletişime Geçin</a>
+      <a href="https://wa.me/905325896771" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
 </div>
 
-<!-- SERVICES INTRO -->
-<section class="section-white">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label" data-i18n="serv_label">Hizmetler</span>
-      <h2 data-i18n="serv_title">Sunduğumuz Hizmetler</h2>
-      <p data-i18n="serv_desc">Plastik enjeksiyon kalıpçılığı alanında kapsamlı hizmet yelpazesi ile yanınızdayız.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="services-page-grid">
-      <div class="service-page-card">
-        <div class="service-big-icon">⚙️</div>
-        <h3 data-i18n="svc1_t">Plastik Enjeksiyon Kalıbı</h3>
-        <p>Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz. Her türlü termoplastik malzeme için uygun kalıp çözümleri sunuyoruz. Çift gözlü, çok gözlü ve yandan geçişli kalıp tasarımları yapabilmekteyiz.</p>
-      </div>
-      <div class="service-page-card">
-        <div class="service-big-icon">🔧</div>
-        <h3 data-i18n="svc2_t">CNC İşleme</h3>
-        <p>Modern CNC tezgahlarımızla hassas işleme hizmetleri sunuyoruz. Çelik, alüminyum, bakır ve özel alaşımlar dahil geniş bir malzeme yelpazesinde yüksek toleranslı parça üretimi gerçekleştiriyoruz.</p>
-      </div>
-      <div class="service-page-card">
-        <div class="service-big-icon">📐</div>
-        <h3 data-i18n="svc3_t">Kalıp Tasarımı</h3>
-        <p>SolidWorks, AutoCAD ve Mastercam gibi endüstri standardı yazılımlar kullanarak müşteri odaklı kalıp tasarımı gerçekleştiriyoruz. 3D modelleme ve simülasyon ile üretim öncesi olası sorunları belirliyoruz.</p>
-      </div>
-      <div class="service-page-card">
-        <div class="service-big-icon">🧪</div>
-        <h3 data-i18n="svc4_t">Prototip Üretim</h3>
-        <p>Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz. Hızlı prototipleme ile ürün geliştirme süreçlerini kısaltıyor, müşterilerimizin pazara giriş sürelerini hızlandırıyoruz.</p>
-      </div>
-      <div class="service-page-card">
-        <div class="service-big-icon">🛠️</div>
-        <h3 data-i18n="svc5_t">Bakım & Onarım</h3>
-        <p>Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz. Kalıp ömrünü uzatmak ve üretim verimliliğini artırmak için düzenli bakım programları oluşturuyoruz.</p>
-      </div>
-      <div class="service-page-card">
-        <div class="service-big-icon">🏭</div>
-        <h3 data-i18n="svc6_t">Fason Üretim</h3>
-        <p>İhtiyacınıza özel fason plastik parça üretimi yapıyoruz. Küçük partilerden büyük seriye kadar esnek üretim kapasitemizle tüm ölçeklerdeki ihtiyaçlarınızı karşılıyoruz.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="section-primary">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Süreç</span>
-      <h2>Çalışma Sürecimiz</h2>
-      <p>Projenizi teslim alındığından itibaren kaliteli sonuca ulaştırıyoruz.</p>
-      <div class="divider"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
-      <div style="text-align:center;padding:2rem 1rem;">
-        <div style="width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem;font-weight:800;color:white;">1</div>
-        <h4 style="color:white;font-size:1.1rem;margin-bottom:0.75rem;">Talep & Analiz</h4>
-        <p style="opacity:0.8;font-size:0.9rem;">Proje gereksinimlerinizi alıyor, teknik analiz yapıyoruz.</p>
-      </div>
-      <div style="text-align:center;padding:2rem 1rem;">
-        <div style="width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem;font-weight:800;color:white;">2</div>
-        <h4 style="color:white;font-size:1.1rem;margin-bottom:0.75rem;">Tasarım</h4>
-        <p style="opacity:0.8;font-size:0.9rem;">3D modelleme ile kalıp tasarımını hazırlıyoruz.</p>
-      </div>
-      <div style="text-align:center;padding:2rem 1rem;">
-        <div style="width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem;font-weight:800;color:white;">3</div>
-        <h4 style="color:white;font-size:1.1rem;margin-bottom:0.75rem;">İmalat</h4>
-        <p style="opacity:0.8;font-size:0.9rem;">CNC tezgahlarımızda hassas üretim gerçekleştiriyoruz.</p>
-      </div>
-      <div style="text-align:center;padding:2rem 1rem;">
-        <div style="width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem;font-weight:800;color:white;">4</div>
-        <h4 style="color:white;font-size:1.1rem;margin-bottom:0.75rem;">Teslimat</h4>
-        <p style="opacity:0.8;font-size:0.9rem;">Kalite kontrolden geçirip zamanında teslim ediyoruz.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<div class="features-strip">
-  <div class="container">
-    <div class="features-strip-inner">
-      <div class="strip-item">
-        <span class="strip-icon">🚀</span>
-        <span class="strip-title" data-i18n="feat1_t">Hızlı Teslimat</span>
-        <span class="strip-desc" data-i18n="feat1_d">Zamanında teslim garantisi</span>
-      </div>
-      <div class="strip-item">
-        <span class="strip-icon">✅</span>
-        <span class="strip-title" data-i18n="feat2_t">Kalite Kontrol</span>
-        <span class="strip-desc" data-i18n="feat2_d">Her ürün titizlikle kontrol edilir</span>
-      </div>
-      <div class="strip-item">
-        <span class="strip-icon">📞</span>
-        <span class="strip-title" data-i18n="feat3_t">7/24 Destek</span>
-        <span class="strip-desc" data-i18n="feat3_d">Kesintisiz müşteri hizmeti</span>
-      </div>
-      <div class="strip-item">
-        <span class="strip-icon">💰</span>
-        <span class="strip-title" data-i18n="feat4_t">Uygun Fiyat</span>
-        <span class="strip-desc" data-i18n="feat4_d">Rekabetçi fiyat politikası</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="container">
-    <h2 data-i18n="cta_title">Projeniz İçin Teklif Alın</h2>
-    <p data-i18n="cta_desc">Plastik enjeksiyon kalıp ihtiyaçlarınız için hemen bizimle iletişime geçin.</p>
-    <a href="iletisim.html" class="btn btn-white" data-i18n="cta_btn">İletişime Geç</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="img/logo.jpg" alt="YEF KALIP" onerror="this.style.display='none'">
-          <div><span class="logo-text">YEF KALIP</span><span class="logo-sub">Plastik Enjeksiyon</span></div>
-        </a>
-        <p data-i18n="footer_desc">Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı ve CNC işleme alanında hizmet veriyoruz.</p>
-        <div class="contact-social">
-          <a href="https://www.instagram.com/yef_kalip/" target="_blank" class="social-link" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><defs><linearGradient id="ig-f" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f09433"/><stop offset=".25" stop-color="#e6683c"/><stop offset=".5" stop-color="#dc2743"/><stop offset=".75" stop-color="#cc2366"/><stop offset="1" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig-f)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.5" fill="none" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.5"/><circle cx="16.5" cy="7.5" r="1.1" fill="white"/></svg></a>
-          <a href="https://www.facebook.com/yefkalip/" target="_blank" class="social-link" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#1877F2"/><path d="M13 21v-7h2.5l.4-3H13V9.5c0-.9.4-1.5 1.6-1.5H16V5.1S14.9 5 13.7 5C11.4 5 10 6.4 10 8.9V11H7.5v3H10v7h3z" fill="white"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_quick">Hızlı Bağlantılar</h4>
-        <ul class="footer-links">
-          <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
-          <li><a href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a></li>
-          <li><a href="hizmetler.html" data-i18n="nav_services">Hizmetler</a></li>
-          <li><a href="galeri.html" data-i18n="nav_gallery">Galeri</a></li>
-          <li><a href="iletisim.html" data-i18n="nav_contact">İletişim</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_services">Hizmetler</h4>
-        <ul class="footer-links">
-          <li><a href="hizmetler.html" data-i18n="svc1_t">Plastik Enjeksiyon Kalıbı</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc2_t">CNC İşleme</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc3_t">Kalıp Tasarımı</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc4_t">Prototip Üretim</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc5_t">Bakım & Onarım</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_contact_title">İletişim</h4>
-        <div class="footer-contact-item"><span>📞</span><a href="tel:+905325896771" style="color:rgba(255,255,255,0.7);text-decoration:none;">+90 532 589 67 71</a></div>
-        <div class="footer-contact-item"><span>📍</span><span>Yukarı Dudullu, Aslı Sk. No:14/A D:1, 34776 Ümraniye/İstanbul</span></div>
-      </div>
+      <div class="footer-brand"><div class="nav-logo" style="margin-bottom:4px;"><img src="img/logo.jpg" alt="YEF KALIP" style="height:44px;width:44px;border-radius:50%;object-fit:cover;border:2px solid var(--red);" /><div class="nav-logo-text">YEF KALIP<small>Plastik Enjeksiyon</small></div></div><p>Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı, CNC işleme ve kalıp tasarımı alanlarında hizmet veriyoruz.</p><div class="footer-social"><a href="https://www.instagram.com/yef_kalip/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/yefkalip/" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/905325896771" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div class="footer-col"><h4>Hızlı Bağlantılar</h4><ul><li><a href="index.html">Ana Sayfa</a></li><li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="hizmetler.html">Hizmetler</a></li><li><a href="galeri.html">Galeri</a></li><li><a href="iletisim.html">İletişim</a></li></ul></div>
+      <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="hizmetler.html">Plastik Enjeksiyon Kalıbı</a></li><li><a href="hizmetler.html">CNC İşleme</a></li><li><a href="hizmetler.html">Kalıp Tasarımı</a></li><li><a href="hizmetler.html">Prototip Üretim</a></li><li><a href="hizmetler.html">Bakım &amp; Onarım</a></li></ul></div>
+      <div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone"></i><span><a href="tel:+905325896771" style="color:var(--muted);">+90 532 589 67 71</a></span></div><div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Yukarı Dudullu, Aslı Sk. No:14/A D:1, 34776 Ümraniye/İstanbul</span></div><div class="footer-contact-item"><i class="fas fa-clock"></i><span>Pzt–Cum: 08:30–18:30</span></div></div>
     </div>
-    <div class="footer-bottom">
-      <p data-i18n="footer_copy">© 2025 YEF KALIP. Tüm hakları saklıdır.</p>
-      <p><span data-i18n="footer_designed">Designed by</span> <a href="https://www.dijitus.com" target="_blank">Dijitus</a></p>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2025 YEF KALIP. Tüm hakları saklıdır.</span><span>Ümraniye, İstanbul</span></div>
   </div>
 </footer>
 
+<a href="https://wa.me/905325896771" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 <script src="js/main.js"></script>
-<a href="https://wa.me/905325896771" target="_blank" class="whatsapp-float" title="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
 </body>
 </html>

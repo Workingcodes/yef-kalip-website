@@ -1,316 +1,531 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YEF KALIP – Plastik Enjeksiyon Kalıp İmalatı | Ümraniye İstanbul</title>
-  <meta name="description" content="YEF KALIP, İstanbul Ümraniye'de yüksek kaliteli plastik enjeksiyon kalıp imalatı, CNC işleme ve endüstriyel çözümler sunar. +90 532 589 67 71">
-  <meta name="keywords" content="plastik enjeksiyon kalıp, kalıp imalatı, cnc işleme, ümraniye kalıp, istanbul kalıp">
-  <meta property="og:title" content="YEF KALIP – Plastik Enjeksiyon Kalıp İmalatı">
-  <meta property="og:description" content="Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı ve CNC işleme hizmetleri.">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+  <meta name="description" content="Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı, CNC işleme ve kalıp tasarımı. Yüksek hassasiyet, hızlı teslimat. +90 532 589 67 71" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+  <style>
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100dvh;
+      background: #0b0e16;
+      display: flex; align-items: center;
+      padding-top: var(--nav-h);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('img/galeri/ig_4.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.28;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(to right, rgba(7,10,20,0.88) 0%, rgba(7,10,20,0.6) 55%, rgba(7,10,20,0.3) 100%),
+        linear-gradient(to bottom, rgba(7,10,20,0.4) 0%, transparent 40%, rgba(7,10,20,0.65) 100%);
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0; z-index:1;
+      background: radial-gradient(ellipse 55% 60% at 70% 50%, rgba(204,27,27,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: flex-start;
+      padding: 100px 0 110px;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px;
+      background: rgba(204,27,27,0.1); border: 1px solid rgba(204,27,27,0.28);
+      border-radius: 20px;
+      font-family:'Outfit',sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.65);} }
+    .hero-headline {
+      font-family:'Outfit',sans-serif;
+      font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+      font-weight: 900; line-height: 1.05;
+      color: #fff; margin-bottom: 22px;
+    }
+    .hero-headline .hl { color: var(--red); }
+    .hero-headline .hl2 { color: #c0cce0; }
+    .hero-sub {
+      color: #7a8a9e; font-size: 0.97rem; line-height: 1.8;
+      max-width: 460px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-scroll {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      color: rgba(255,255,255,0.22); font-size:0.65rem; letter-spacing:.12em; text-transform:uppercase;
+      z-index: 2;
+    }
+    .hero-scroll::after {
+      content:''; width:1px; height:32px;
+      background:linear-gradient(to bottom, rgba(204,27,27,0.5), transparent);
+      animation: grow-line 1.8s ease-in-out infinite;
+    }
+    @keyframes grow-line { 0%,100%{transform:scaleY(0);opacity:0;}50%{transform:scaleY(1);opacity:1;} }
+
+    /* ===== STATS (white bg) ===== */
+    .stats-section {
+      background: #fff;
+      border-top: 3px solid var(--red);
+      padding: 0;
+    }
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat-box {
+      padding: 44px 28px;
+      border-right: 1px solid rgba(0,0,0,0.07);
+      text-align: center; position: relative;
+      transition: background 0.25s;
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-box:hover { background: #fafafa; }
+    .stat-box-num {
+      font-family:'Outfit',sans-serif; font-size: 2.8rem; font-weight: 900;
+      color: var(--red); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-box-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #777; font-weight: 600; }
+
+    /* ===== ABOUT ===== */
+    .about-section { padding: 100px 0; background: #f4f6f9; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .about-photos {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .about-photo-tall { grid-row: 1/3; border-radius: 6px; overflow: hidden; }
+    .about-photo-sm   { border-radius: 6px; overflow: hidden; }
+    .about-photos img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.6s ease; }
+    .about-photo-tall img { height: 340px; }
+    .about-photo-sm   img { height: 164px; }
+    .about-photos img:hover { transform: scale(1.04); }
+    .about-tag {
+      display: inline-block; font-size:.68rem; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase; color:var(--red);
+      border-left: 2px solid var(--red); padding-left:12px; margin-bottom:18px;
+    }
+    .about-h2 {
+      font-family:'Outfit',sans-serif; font-size: clamp(1.7rem,2.8vw,2.4rem);
+      font-weight:800; color:#0f1117; line-height:1.15; margin-bottom:18px;
+    }
+    .about-h2 em { color:var(--red); font-style:normal; }
+    .about-desc { color:#5a6270; line-height:1.8; margin-bottom:28px; font-size:.93rem; }
+    .about-facts { display:flex; flex-direction:column; gap:10px; }
+    .about-fact {
+      display:flex; align-items:center; gap:10px;
+      font-size:.86rem; color:#4a5568;
+    }
+    .about-fact i { color:var(--red); width:16px; text-align:center; flex-shrink:0; }
+
+    /* ===== SERVICES (dark) ===== */
+    .services-section { padding: 100px 0; background: #0d1017; }
+    .services-h { margin-bottom:56px; }
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px; overflow: hidden;
+    }
+    .svc-card {
+      background: #0d1017; padding: 36px 28px;
+      transition: background 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .svc-card::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+      transform: scaleX(0); transform-origin:left; transition: transform 0.35s ease;
+    }
+    .svc-card:hover { background: #111520; }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width:48px; height:48px; border-radius:8px;
+      background:rgba(204,27,27,0.1); border:1px solid rgba(204,27,27,0.2);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--red); font-size:1.15rem; margin-bottom:20px;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .svc-card:hover .svc-icon { background:rgba(204,27,27,0.2); transform:scale(1.08); }
+    .svc-title {
+      font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700;
+      color:#fff; margin-bottom:10px;
+    }
+    .svc-desc { font-size:.84rem; color:#6b7a8d; line-height:1.7; }
+
+    /* ===== GALLERY TEASER ===== */
+    .gallery-teaser { padding: 100px 0; background: #fff; }
+    .gt-header {
+      display:flex; justify-content:space-between; align-items:flex-end;
+      flex-wrap:wrap; gap:16px; margin-bottom:48px;
+    }
+    .gt-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 8px;
+    }
+    .gt-item { overflow:hidden; border-radius:6px; cursor:pointer; position:relative; }
+    .gt-item:first-child { grid-row: 1 / 3; }
+    .gt-item img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.6s cubic-bezier(.16,1,.3,1); }
+    .gt-item:hover img { transform: scale(1.06); }
+    .gt-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%);
+      opacity:0; transition:opacity .3s;
+      display:flex; align-items:flex-end; padding:14px;
+    }
+    .gt-item:hover .gt-overlay { opacity:1; }
+    .gt-overlay span { color:#fff; font-size:.76rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+
+    /* Lightbox */
+    #lb { position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:9999; display:none; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
+    #lb.open { display:flex; }
+    #lb img { max-width:90vw; max-height:82vh; border-radius:6px; box-shadow:0 24px 80px rgba(0,0,0,0.7); }
+    #lb .lb-x { position:fixed; top:22px; right:26px; font-size:1.8rem; color:#fff; cursor:pointer; opacity:.7; line-height:1; transition:opacity .2s; }
+    #lb .lb-x:hover { opacity:1; }
+    #lb .lb-caption { color:rgba(255,255,255,0.6); font-size:0.82rem; font-family:'Outfit',sans-serif; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      padding: 120px 0;
+      background: #0b0e16;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(204,27,27,0.09) 0%, transparent 70%);
+    }
+    .cta-line { position:absolute; top:0; left:50%; width:1px; height:72px; background:linear-gradient(to bottom, transparent, var(--red)); }
+    .cta-inner { position:relative; z-index:2; }
+    .cta-tag { font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); display:block; margin-bottom:16px; }
+    .cta-h2 { font-family:'Outfit',sans-serif; font-size:clamp(1.9rem,3.5vw,3rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:14px; }
+    .cta-h2 em { color:#adbdcc; font-style:normal; }
+    .cta-sub { color:#7a8a9e; font-size:.96rem; line-height:1.75; max-width:500px; margin:0 auto 44px; }
+    .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns:1fr; gap:40px; }
+      .svc-grid { grid-template-columns: repeat(2,1fr); }
+      .gt-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gt-item:first-child { grid-row:auto; }
+      .gt-item { height: 200px; }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .stat-box:nth-child(2) { border-right: none; }
+    }
+    @media (max-width: 640px) {
+      .svc-grid { grid-template-columns:1fr; }
+      .gt-grid { grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="logo">
-      <img src="img/logo.jpg" alt="YEF KALIP Logo" onerror="this.style.display='none'">
-      <div>
-        <span class="logo-text">YEF KALIP</span>
-        <span class="logo-sub">Plastik Enjeksiyon</span>
-      </div>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="img/logo.jpg" alt="YEF KALIP" />
+      <div class="nav-logo-text">YEF KALIP<small>Plastik Enjeksiyon</small></div>
     </a>
-    <nav id="mainNav">
-      <a href="index.html" data-i18n="nav_home">Ana Sayfa</a>
-      <a href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a>
-      <a href="hizmetler.html" data-i18n="nav_services">Hizmetler</a>
-      <a href="galeri.html" data-i18n="nav_gallery">Galeri</a>
-      <a href="iletisim.html" data-i18n="nav_contact">İletişim</a>
-    </nav>
-    <div class="header-right">
-      <a href="https://www.instagram.com/yef_kalip/" target="_blank" class="header-social-link" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><defs><linearGradient id="ig-h" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f09433"/><stop offset=".25" stop-color="#e6683c"/><stop offset=".5" stop-color="#dc2743"/><stop offset=".75" stop-color="#cc2366"/><stop offset="1" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig-h)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.5" fill="none" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.5"/><circle cx="16.5" cy="7.5" r="1.1" fill="white"/></svg></a>
-      <a href="https://www.facebook.com/yefkalip/" target="_blank" class="header-social-link" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#1877F2"/><path d="M13 21v-7h2.5l.4-3H13V9.5c0-.9.4-1.5 1.6-1.5H16V5.1S14.9 5 13.7 5C11.4 5 10 6.4 10 8.9V11H7.5v3H10v7h3z" fill="white"/></svg></a>
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="tr">TR</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
+    <div class="nav-menu">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="hizmetler.html">Hizmetler</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="iletisim.html">İletişim</a>
     </div>
-    <button class="hamburger" aria-label="Menü">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="https://www.instagram.com/yef_kalip/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/yefkalip/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/905325896771" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="nav-cta"><a href="iletisim.html"><i class="fas fa-envelope"></i> İletişime Geçin</a></div>
+    </div>
+    <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
   </div>
-</header>
+</nav>
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="hakkimizda.html">Hakkımızda</a>
+  <a href="hizmetler.html">Hizmetler</a>
+  <a href="galeri.html">Galeri</a>
+  <a href="iletisim.html">İletişim</a>
+  <a href="tel:+905325896771" style="color:var(--red);margin-top:8px;"><i class="fas fa-phone"></i> 0532 589 67 71</a>
+</nav>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="img/hero/hero.mp4" type="video/mp4">
-  </video>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge" data-i18n="hero_badge">Ümraniye, İstanbul</div>
-    <h1 data-i18n="hero_title">Plastik Enjeksiyon<br><span>Kalıp İmalatı</span></h1>
-    <p data-i18n="hero_desc">Yüksek hassasiyetli plastik enjeksiyon kalıpları, CNC işleme ve endüstriyel çözümler. Kaliteli üretimde güvenilir çözüm ortağınız.</p>
-    <div class="hero-btns">
-      <a href="hizmetler.html" class="btn btn-primary" data-i18n="hero_btn1">Hizmetlerimiz</a>
-      <a href="iletisim.html" class="btn btn-outline" data-i18n="hero_btn2">İletişime Geç</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <a href="#stats">
-      <span style="font-size:0.7rem;letter-spacing:1px;opacity:0.7">KAYDIRIN</span>
-      <div class="hero-scroll-arrow"></div>
-    </a>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="section-primary" id="stats">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-number" data-target="10" data-suffix="+">10+</span>
-        <span class="stat-label" data-i18n="stats_exp">Yıllık Deneyim</span>
+    <div class="hero-inner fade-in">
+      <div class="hero-badge"><span class="dot"></span> Yukarı Dudullu &mdash; Ümraniye / İstanbul</div>
+      <h1 class="hero-headline">
+        Hassas <span class="hl">Plastik</span><br>
+        Enjeksiyon &amp;<br>
+        <span class="hl2">Kalıp İmalatı</span>
+      </h1>
+      <p class="hero-sub">
+        Ümraniye'de yüksek hassasiyetli plastik enjeksiyon kalıpları,
+        CNC işleme ve özel kalıp tasarımı. Toleransınıza uygun, zamanında teslimat.
+      </p>
+      <div class="hero-actions">
+        <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Bize Ulaşın</a>
+        <a href="hizmetler.html" class="btn btn-outline">Hizmetlerimiz</a>
       </div>
-      <div class="stat-card">
-        <span class="stat-number" data-target="500" data-suffix="+">500+</span>
-        <span class="stat-label" data-i18n="stats_proj">Tamamlanan Proje</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number" data-target="100" data-suffix="%">100%</span>
-        <span class="stat-label" data-i18n="stats_qual">Kalite Standardı</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number" data-target="98" data-suffix="%">98%</span>
-        <span class="stat-label" data-i18n="stats_client">Müşteri Memnuniyeti</span>
-      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Keşfet</div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="stats-row container" style="padding:0 24px;">
+    <div class="stat-box fade-in">
+      <div class="stat-box-num" data-target="10" data-suffix="+">10+</div>
+      <div class="stat-box-label">Yıl Deneyim</div>
+    </div>
+    <div class="stat-box fade-in stagger-1">
+      <div class="stat-box-num" data-target="500" data-suffix="+">500+</div>
+      <div class="stat-box-label">Tamamlanan Proje</div>
+    </div>
+    <div class="stat-box fade-in stagger-2">
+      <div class="stat-box-num" data-target="6">6</div>
+      <div class="stat-box-label">Hizmet Alanı</div>
+    </div>
+    <div class="stat-box fade-in stagger-3">
+      <div class="stat-box-num" data-target="100" data-suffix="%">100%</div>
+      <div class="stat-box-label">Müşteri Memnuniyeti</div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section-white">
+<!-- ===== ABOUT ===== -->
+<section class="about-section">
   <div class="container">
     <div class="about-grid">
-      <div class="about-image-wrap">
-        <img src="img/galeri/ig_2.jpg" alt="YEF KALIP Atölye" onerror="this.src='img/galeri/ig_1.jpg'">
-        <div class="about-badge">
-          <strong data-i18n="about_badge_num">10+</strong>
-          <span data-i18n="about_badge_text">Yıllık Deneyim</span>
+      <div class="about-photos slide-left">
+        <div class="about-photo-tall">
+          <img src="img/galeri/ig_1.jpg" alt="YEF KALIP Atölye" loading="lazy" />
+        </div>
+        <div class="about-photo-sm">
+          <img src="img/galeri/ig_3.jpg" alt="Plastik Enjeksiyon" loading="lazy" />
+        </div>
+        <div class="about-photo-sm">
+          <img src="img/galeri/ig_7.jpg" alt="Kalıp İmalatı" loading="lazy" />
         </div>
       </div>
-      <div class="about-content">
-        <span class="section-label" data-i18n="about_label">Hakkımızda</span>
-        <h2 data-i18n="about_title">Kalıpçılıkta Güvenilir Çözüm Ortağınız</h2>
-        <p data-i18n="about_desc1">YEF KALIP, İstanbul Ümraniye'de plastik enjeksiyon kalıp imalatı alanında faaliyet gösteren, deneyimli kadrosuyla sektörüne değer katan bir firmadır.</p>
-        <p data-i18n="about_desc2">Müşterilerimizin ihtiyaçlarına özel çözümler üretir, yüksek hassasiyet ve kalite standartlarını her projemizde ön planda tutarız.</p>
-        <div class="about-features">
-          <span class="about-feature" data-i18n="svc1_t">Plastik Enjeksiyon Kalıbı</span>
-          <span class="about-feature" data-i18n="svc2_t">CNC İşleme</span>
-          <span class="about-feature" data-i18n="svc3_t">Kalıp Tasarımı</span>
-          <span class="about-feature" data-i18n="svc4_t">Prototip Üretim</span>
+      <div class="about-text slide-right">
+        <span class="about-tag">Hakkımızda</span>
+        <h2 class="about-h2">Üretimde <em>Hassasiyet</em>,<br>Teslimatta Güvenilirlik</h2>
+        <p class="about-desc">
+          YEF KALIP, Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı alanında
+          faaliyet göstermektedir. Deneyimli kadrosu ve modern ekipmanlarıyla
+          müşterilerine özel çözümler sunan güvenilir bir üretim ortağıdır.
+        </p>
+        <div class="about-facts">
+          <div class="about-fact"><i class="fa fa-check-circle"></i> Yüksek hassasiyetli plastik enjeksiyon kalıpları</div>
+          <div class="about-fact"><i class="fa fa-check-circle"></i> CAD/CAM ile kalıp tasarımı ve imalatı</div>
+          <div class="about-fact"><i class="fa fa-check-circle"></i> Prototipten seri üretime tam hizmet</div>
+          <div class="about-fact"><i class="fa fa-check-circle"></i> Otomotiv, ev elektroniği ve ambalaj sektörleri</div>
         </div>
-        <br>
-        <a href="hakkimizda.html" class="btn btn-primary">
-          <span data-i18n="nav_about">Hakkımızda</span> →
-        </a>
+        <div style="margin-top:28px;">
+          <a href="hakkimizda.html" class="btn btn-primary" style="background:var(--red);">Daha Fazla Bilgi</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES STRIP -->
-<div class="features-strip">
+<!-- ===== SERVICES ===== -->
+<section class="services-section">
   <div class="container">
-    <div class="features-strip-inner">
-      <div class="strip-item">
-        <span class="strip-icon">🚀</span>
-        <span class="strip-title" data-i18n="feat1_t">Hızlı Teslimat</span>
-        <span class="strip-desc" data-i18n="feat1_d">Zamanında teslim garantisi</span>
+    <div class="services-h">
+      <div class="section-label">Hizmetlerimiz</div>
+      <h2 class="section-title">Geniş <span>Çözüm</span> Yelpazesi</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card slide-up">
+        <div class="svc-icon"><i class="fa fa-cube"></i></div>
+        <div class="svc-title">Plastik Enjeksiyon Kalıbı</div>
+        <p class="svc-desc">Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz. Her ölçek ve karmaşıklıkta proje kapasitesi.</p>
       </div>
-      <div class="strip-item">
-        <span class="strip-icon">✅</span>
-        <span class="strip-title" data-i18n="feat2_t">Kalite Kontrol</span>
-        <span class="strip-desc" data-i18n="feat2_d">Her ürün titizlikle kontrol edilir</span>
+      <div class="svc-card slide-up stagger-1">
+        <div class="svc-icon"><i class="fa fa-cogs"></i></div>
+        <div class="svc-title">CNC İşleme</div>
+        <p class="svc-desc">Modern CNC tezgahlarımızla hassas frezeleme, tornalama ve işleme hizmetleri sunuyoruz.</p>
       </div>
-      <div class="strip-item">
-        <span class="strip-icon">📞</span>
-        <span class="strip-title" data-i18n="feat3_t">7/24 Destek</span>
-        <span class="strip-desc" data-i18n="feat3_d">Kesintisiz müşteri hizmeti</span>
+      <div class="svc-card slide-up stagger-2">
+        <div class="svc-icon"><i class="fa fa-ruler-combined"></i></div>
+        <div class="svc-title">Kalıp Tasarımı</div>
+        <p class="svc-desc">CAD/CAM teknolojileriyle müşteri odaklı kalıp tasarımı gerçekleştiriyoruz. Simülasyon ve optimizasyon dahil.</p>
       </div>
-      <div class="strip-item">
-        <span class="strip-icon">💰</span>
-        <span class="strip-title" data-i18n="feat4_t">Uygun Fiyat</span>
-        <span class="strip-desc" data-i18n="feat4_d">Rekabetçi fiyat politikası</span>
+      <div class="svc-card slide-up stagger-3">
+        <div class="svc-icon"><i class="fa fa-microscope"></i></div>
+        <div class="svc-title">Prototip Üretim</div>
+        <p class="svc-desc">Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz. Hızlı dönüş, doğru sonuç.</p>
+      </div>
+      <div class="svc-card slide-up stagger-4">
+        <div class="svc-icon"><i class="fa fa-tools"></i></div>
+        <div class="svc-title">Bakım &amp; Onarım</div>
+        <p class="svc-desc">Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz. Uzun ömürlü kalıp performansı.</p>
+      </div>
+      <div class="svc-card slide-up stagger-5">
+        <div class="svc-icon"><i class="fa fa-industry"></i></div>
+        <div class="svc-title">Fason Üretim</div>
+        <p class="svc-desc">İhtiyacınıza özel fason plastik parça üretimi yapıyoruz. Küçük seriden büyük partilere esnek kapasite.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px; text-align:center;">
+      <a href="hizmetler.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.25);">Tüm Hizmetleri Gör</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY TEASER ===== -->
+<section class="gallery-teaser">
+  <div class="container">
+    <div class="gt-header">
+      <div class="slide-left">
+        <div class="section-label" style="color:var(--red)">Çalışmalarımızdan</div>
+        <h2 class="section-title" style="color:#0f1117;">Galeri <span>Kesimleri</span></h2>
+      </div>
+      <a href="galeri.html" class="btn btn-primary slide-right" style="margin-bottom:4px;">Tüm Galeriyi Gör</a>
+    </div>
+    <div class="gt-grid">
+      <div class="gt-item fade-in" onclick="openLb('img/galeri/ig_5.jpg','Plastik Enjeksiyon Kalıbı')">
+        <img src="img/galeri/ig_5.jpg" alt="Plastik Enjeksiyon Kalıbı" loading="lazy" />
+        <div class="gt-overlay"><span>Kalıp İmalatı</span></div>
+      </div>
+      <div class="gt-item fade-in stagger-1" onclick="openLb('img/galeri/ig_2.jpg','CNC İşleme')">
+        <img src="img/galeri/ig_2.jpg" alt="CNC İşleme" loading="lazy" />
+        <div class="gt-overlay"><span>CNC İşleme</span></div>
+      </div>
+      <div class="gt-item fade-in stagger-2" onclick="openLb('img/galeri/ig_6.jpg','Kalıp Tasarımı')">
+        <img src="img/galeri/ig_6.jpg" alt="Kalıp Tasarımı" loading="lazy" />
+        <div class="gt-overlay"><span>Kalıp Tasarımı</span></div>
+      </div>
+      <div class="gt-item fade-in stagger-3" onclick="openLb('img/galeri/ig_8.jpg','Üretim')">
+        <img src="img/galeri/ig_8.jpg" alt="Üretim" loading="lazy" />
+        <div class="gt-overlay"><span>Üretim</span></div>
+      </div>
+      <div class="gt-item fade-in stagger-4" onclick="openLb('img/galeri/ig_9.jpg','Kalıp')">
+        <img src="img/galeri/ig_9.jpg" alt="Kalıp" loading="lazy" />
+        <div class="gt-overlay"><span>Kalıp</span></div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb">
+  <span class="lb-x" onclick="closeLb()">&times;</span>
+  <img src="" alt="" />
+  <div class="lb-caption"></div>
 </div>
 
-<!-- SERVICES -->
-<section class="section-primary">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label" data-i18n="serv_label">Hizmetler</span>
-      <h2 data-i18n="serv_title">Sunduğumuz Hizmetler</h2>
-      <p data-i18n="serv_desc">Plastik enjeksiyon kalıpçılığı alanında kapsamlı hizmet yelpazesi ile yanınızdayız.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <h3 data-i18n="svc1_t">Plastik Enjeksiyon Kalıbı</h3>
-        <p data-i18n="svc1_d">Yüksek hassasiyetli plastik enjeksiyon kalıpları tasarlıyor ve imalatını yapıyoruz.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3 data-i18n="svc2_t">CNC İşleme</h3>
-        <p data-i18n="svc2_d">Modern CNC tezgahlarımızla hassas işleme hizmetleri sunuyoruz.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📐</div>
-        <h3 data-i18n="svc3_t">Kalıp Tasarımı</h3>
-        <p data-i18n="svc3_d">CAD/CAM teknolojileriyle müşteri odaklı kalıp tasarımı gerçekleştiriyoruz.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🧪</div>
-        <h3 data-i18n="svc4_t">Prototip Üretim</h3>
-        <p data-i18n="svc4_d">Seri üretim öncesi prototip ve test kalıpları hazırlıyoruz.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🛠️</div>
-        <h3 data-i18n="svc5_t">Bakım & Onarım</h3>
-        <p data-i18n="svc5_d">Mevcut kalıplarınızın bakım, onarım ve revizyon hizmetlerini veriyoruz.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏭</div>
-        <h3 data-i18n="svc6_t">Fason Üretim</h3>
-        <p data-i18n="svc6_d">İhtiyacınıza özel fason plastik parça üretimi yapıyoruz.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <a href="hizmetler.html" class="btn btn-outline" data-i18n="nav_services">Tüm Hizmetler</a>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY PREVIEW -->
-<section class="section-white">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label" data-i18n="gallery_label">Galeri</span>
-      <h2 data-i18n="gallery_title">Çalışmalarımızdan</h2>
-      <p data-i18n="gallery_desc">İstanbul'un merkezinde ürettiğimiz kaliteli kalıplar ve projelerden seçmeler.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item" data-lightbox>
-        <img src="img/galeri/ig_1.jpg" alt="YEF KALIP Çalışma 1" loading="lazy">
-        <div class="gallery-overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" data-lightbox>
-        <img src="img/galeri/ig_3.jpg" alt="YEF KALIP Çalışma 2" loading="lazy">
-        <div class="gallery-overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" data-lightbox>
-        <img src="img/galeri/ig_5.jpg" alt="YEF KALIP Çalışma 3" loading="lazy">
-        <div class="gallery-overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" data-lightbox>
-        <img src="img/galeri/ig_7.jpg" alt="YEF KALIP Çalışma 4" loading="lazy">
-        <div class="gallery-overlay"><span>🔍</span></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <a href="galeri.html" class="btn btn-primary" data-i18n="nav_gallery">Tüm Galeri</a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
+<!-- ===== CTA ===== -->
 <section class="cta-section">
-  <div class="container">
-    <h2 data-i18n="cta_title">Projeniz İçin Teklif Alın</h2>
-    <p data-i18n="cta_desc">Plastik enjeksiyon kalıp ihtiyaçlarınız için hemen bizimle iletişime geçin.</p>
-    <a href="iletisim.html" class="btn btn-white" data-i18n="cta_btn">İletişime Geç</a>
+  <div class="cta-line"></div>
+  <div class="container cta-inner">
+    <span class="cta-tag">Hemen Başlayalım</span>
+    <h2 class="cta-h2">Projeniz İçin<br><em>Teklif Alın</em></h2>
+    <p class="cta-sub">
+      Plastik enjeksiyon kalıp ihtiyaçlarınız için uzman ekibimizle görüşün.
+      Hızlı dönüş, rekabetçi fiyat, kaliteli üretim.
+    </p>
+    <div class="cta-btns">
+      <a href="iletisim.html" class="btn btn-primary"><i class="fas fa-envelope"></i> İletişime Geçin</a>
+      <a href="https://wa.me/905325896771" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="img/logo.jpg" alt="YEF KALIP" onerror="this.style.display='none'">
-          <div>
-            <span class="logo-text">YEF KALIP</span>
-            <span class="logo-sub">Plastik Enjeksiyon</span>
-          </div>
-        </a>
-        <p data-i18n="footer_desc">Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı ve CNC işleme alanında hizmet veriyoruz.</p>
-        <div class="contact-social">
-          <a href="https://www.instagram.com/yef_kalip/" target="_blank" class="social-link" title="Instagram">📷</a>
-          <a href="https://www.facebook.com/yefkalip/" target="_blank" class="social-link" title="Facebook">📘</a>
+        <div class="nav-logo" style="margin-bottom:4px;">
+          <img src="img/logo.jpg" alt="YEF KALIP" style="height:44px;width:44px;border-radius:50%;object-fit:cover;border:2px solid var(--red);" />
+          <div class="nav-logo-text">YEF KALIP<small>Plastik Enjeksiyon</small></div>
+        </div>
+        <p>Ümraniye İstanbul'da plastik enjeksiyon kalıp imalatı, CNC işleme ve kalıp tasarımı alanlarında hizmet veriyoruz.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/yef_kalip/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/yefkalip/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/905325896771" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_quick">Hızlı Bağlantılar</h4>
-        <ul class="footer-links">
-          <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
-          <li><a href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a></li>
-          <li><a href="hizmetler.html" data-i18n="nav_services">Hizmetler</a></li>
-          <li><a href="galeri.html" data-i18n="nav_gallery">Galeri</a></li>
-          <li><a href="iletisim.html" data-i18n="nav_contact">İletişim</a></li>
+      <div class="footer-col">
+        <h4>Hızlı Bağlantılar</h4>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="hizmetler.html">Hizmetler</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
         </ul>
       </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_services">Hizmetler</h4>
-        <ul class="footer-links">
-          <li><a href="hizmetler.html" data-i18n="svc1_t">Plastik Enjeksiyon Kalıbı</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc2_t">CNC İşleme</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc3_t">Kalıp Tasarımı</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc4_t">Prototip Üretim</a></li>
-          <li><a href="hizmetler.html" data-i18n="svc5_t">Bakım & Onarım</a></li>
+      <div class="footer-col">
+        <h4>Hizmetler</h4>
+        <ul>
+          <li><a href="hizmetler.html">Plastik Enjeksiyon Kalıbı</a></li>
+          <li><a href="hizmetler.html">CNC İşleme</a></li>
+          <li><a href="hizmetler.html">Kalıp Tasarımı</a></li>
+          <li><a href="hizmetler.html">Prototip Üretim</a></li>
+          <li><a href="hizmetler.html">Bakım &amp; Onarım</a></li>
         </ul>
       </div>
-      <div>
-        <h4 class="footer-title" data-i18n="footer_contact_title">İletişim</h4>
+      <div class="footer-col">
+        <h4>İletişim</h4>
         <div class="footer-contact-item">
-          <span>📞</span>
-          <a href="tel:+905325896771" style="color:rgba(255,255,255,0.7);text-decoration:none;">+90 532 589 67 71</a>
+          <i class="fas fa-phone"></i>
+          <span><a href="tel:+905325896771" style="color:var(--muted);">+90 532 589 67 71</a></span>
         </div>
         <div class="footer-contact-item">
-          <span>📍</span>
+          <i class="fas fa-map-marker-alt"></i>
           <span>Yukarı Dudullu, Aslı Sk. No:14/A D:1, 34776 Ümraniye/İstanbul</span>
         </div>
         <div class="footer-contact-item">
-          <span>📷</span>
-          <a href="https://instagram.com/yef_kalip" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;">@yef_kalip</a>
+          <i class="fas fa-clock"></i>
+          <span>Pzt–Cum: 08:30–18:30</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p data-i18n="footer_copy">© 2025 YEF KALIP. Tüm hakları saklıdır.</p>
-      <p><span data-i18n="footer_designed">Designed by</span> <a href="https://www.dijitus.com" target="_blank">Dijitus</a></p>
+      <span>&copy; 2025 YEF KALIP. Tüm hakları saklıdır.</span>
+      <span>Ümraniye, İstanbul</span>
     </div>
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox">
-  <button class="lightbox-close">✕</button>
-  <img src="" alt="Galeri">
-</div>
-
-<script src="js/main.js"></script>
-<a href="https://wa.me/905325896771" target="_blank" class="whatsapp-float" title="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- WhatsApp -->
+<a href="https://wa.me/905325896771" target="_blank" class="whatsapp-float" title="WhatsApp ile Ulaşın">
+  <i class="fab fa-whatsapp"></i>
 </a>
 
+<script src="js/main.js"></script>
 </body>
 </html>
