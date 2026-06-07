@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -31,7 +31,7 @@
     }
     .hero::before {
       content:''; position:absolute; inset:0; z-index:1;
-      background: radial-gradient(ellipse 55% 60% at 70% 50%, rgba(204,27,27,0.07) 0%, transparent 65%);
+      background: radial-gradient(ellipse 55% 60% at 70% 50%, rgba(21,101,192,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-inner {
@@ -43,7 +43,7 @@
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 5px 14px;
-      background: rgba(204,27,27,0.1); border: 1px solid rgba(204,27,27,0.28);
+      background: rgba(21,101,192,0.1); border: 1px solid rgba(21,101,192,0.28);
       border-radius: 20px;
       font-family:'Outfit',sans-serif; font-size: 0.7rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase; color: var(--red);
@@ -75,7 +75,7 @@
     }
     .hero-scroll::after {
       content:''; width:1px; height:32px;
-      background:linear-gradient(to bottom, rgba(204,27,27,0.5), transparent);
+      background:linear-gradient(to bottom, rgba(21,101,192,0.5), transparent);
       animation: grow-line 1.8s ease-in-out infinite;
     }
     @keyframes grow-line { 0%,100%{transform:scaleY(0);opacity:0;}50%{transform:scaleY(1);opacity:1;} }
@@ -159,12 +159,12 @@
     .svc-card:hover::after { transform: scaleX(1); }
     .svc-icon {
       width:48px; height:48px; border-radius:8px;
-      background:rgba(204,27,27,0.1); border:1px solid rgba(204,27,27,0.2);
+      background:rgba(21,101,192,0.1); border:1px solid rgba(21,101,192,0.2);
       display:flex; align-items:center; justify-content:center;
       color:var(--red); font-size:1.15rem; margin-bottom:20px;
       transition: background 0.25s, transform 0.25s;
     }
-    .svc-card:hover .svc-icon { background:rgba(204,27,27,0.2); transform:scale(1.08); }
+    .svc-card:hover .svc-icon { background:rgba(21,101,192,0.2); transform:scale(1.08); }
     .svc-title {
       font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700;
       color:#fff; margin-bottom:10px;
@@ -212,7 +212,7 @@
     }
     .cta-section::before {
       content:''; position:absolute; inset:0;
-      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(204,27,27,0.09) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(21,101,192,0.09) 0%, transparent 70%);
     }
     .cta-line { position:absolute; top:0; left:50%; width:1px; height:72px; background:linear-gradient(to bottom, transparent, var(--red)); }
     .cta-inner { position:relative; z-index:2; }
