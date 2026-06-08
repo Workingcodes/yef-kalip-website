@@ -84,6 +84,27 @@
     .gallery-section .section-title { color: #0f1117; }
     .gallery-section .section-title span { color: var(--red); }
     .gallery-section .section-label { color: var(--red); }
+
+    /* Instagram banner */
+    .insta-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff; border: 1px solid rgba(15,17,23,0.1);
+      border-radius: 10px; padding: 14px 20px; margin-bottom: 32px;
+      flex-wrap: wrap; gap: 12px;
+      box-shadow: 0 2px 12px rgba(15,17,23,0.06);
+    }
+    .insta-bar-left { display: flex; align-items: center; gap: 14px; }
+    .insta-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--red); flex-shrink: 0; }
+    .insta-handle { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .95rem; color: #0f1117; }
+    .insta-stats { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+    .insta-follow-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 6px;
+      background: linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      color: #fff; font-family: 'Outfit', sans-serif; font-size: .82rem; font-weight: 700;
+      transition: opacity .25s, transform .25s; white-space: nowrap;
+    }
+    .insta-follow-btn:hover { opacity: .9; transform: translateY(-1px); }
     @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 640px) { .gallery-grid { grid-template-columns: 1fr; } }
   </style>
@@ -129,7 +150,19 @@
 <section class="gallery-section">
   <div class="container">
     <div class="section-label">Çalışmalarımız</div>
-    <h2 class="section-title" style="color:var(--white);">Üretimden <span>Kareler</span></h2>
+    <h2 class="section-title">Üretimden <span>Kareler</span></h2>
+
+    <div class="insta-bar fade-in">
+      <div class="insta-bar-left">
+        <img src="img/logo.jpg" alt="YEF KALIP" class="insta-avatar" />
+        <div class="insta-bar-info">
+          <div class="insta-handle">@yef_kalip</div>
+          <div class="insta-stats">Instagram'da takip edin</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/yef_kalip/" target="_blank" rel="noopener" class="insta-follow-btn"><i class="fab fa-instagram"></i> Takip Et</a>
+    </div>
+
     <div class="gallery-grid">
 
       <div class="gallery-item fade-in" onclick="openLb('img/galeri/ig_1.jpg','Kalıp İmalatı')">
@@ -206,10 +239,6 @@
 
     </div>
 
-    <div style="text-align:center;margin-top:56px;">
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Daha fazla çalışma için Instagram'ı takip edin</p>
-      <a href="https://www.instagram.com/yef_kalip/" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> @yef_kalip</a>
-    </div>
   </div>
 </section>
 
